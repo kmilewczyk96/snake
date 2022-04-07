@@ -81,8 +81,12 @@ def result(score):
             name = screen.textinput(
                 title="IMPRESSIVE SCORE!",
                 prompt="Please enter your name (3 - 10 characters)")
-            if name and len(name.strip()) in range(3, 11):
-                valid = True
+            if type(name) == str:
+                if len(name.strip()) in range(3, 11):
+                    valid = True
+
+            else:
+                start_main_menu()
 
         if name:
             score.update_highscores(name, score.score, score.rank_position())
