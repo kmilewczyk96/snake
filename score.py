@@ -40,9 +40,19 @@ class Score(Turtle):
         def sort_by_dict_value(e):
             return e["score"]
 
-        with open(self.get_path() + "/highscores.json") as f:
-            self.highscores = json.load(f)
-            self.highscores.sort(key=sort_by_dict_value, reverse=True)
+        try:
+            with open(self.get_path() + "/highscores.json") as f:
+                self.highscores = json.load(f)
+                self.highscores.sort(key=sort_by_dict_value, reverse=True)
+
+        except FileNotFoundError:
+            self.highscores = [
+                {"name": "default", "score": 15},
+                {"name": "default", "score": 12},
+                {"name": "default", "score": 5},
+                {"name": "default", "score": 3},
+                {"name": "default", "score": 1}
+            ]
 
     def update_highscores(self, name: str, highscore: int, pos: int):
         self.highscores.pop()
