@@ -1,5 +1,5 @@
 from turtle import Turtle
-from random import randint
+from random import choice
 
 
 class Food(Turtle):
@@ -10,9 +10,16 @@ class Food(Turtle):
         self.color("#ff8787")
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
         self.speed("fastest")
-        self.spawn()
+        self.spawn(blocked_pos=[])
 
-    def spawn(self):
-        random_x = randint(-14, 14) * 20
-        random_y = randint(-14, 14) * 20
-        self.goto(random_x, random_y)
+    def spawn(self, blocked_pos: list):
+        available = []
+        blocked_pos.append((int(self.xcor()), int(self.ycor())))
+        for x in range(-19, 20):
+            x *= 20
+            for y in range(-19, 20):
+                y *= 20
+                if (x, y) not in blocked_pos:
+                    available.append((x, y))
+
+        self.goto(choice(available))

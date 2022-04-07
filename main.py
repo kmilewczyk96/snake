@@ -51,7 +51,7 @@ def start_game():
             snake.grow()
             score.score += 1
             screen.title(f"CURRENT SCORE: {score.score}")
-            food.spawn()
+            food.spawn(snake.segments_pos)
 
         if (
                 snake.head.xcor() > 390 or
@@ -63,7 +63,7 @@ def start_game():
             run = False
 
         for segment in snake.body[1:]:
-            if snake.head.distance(segment) < 10:
+            if snake.head.distance(segment) < 15:
                 death_animation(snake)
                 run = False
 
@@ -80,8 +80,8 @@ def result(score):
         while not valid:
             name = screen.textinput(
                 title="IMPRESSIVE SCORE!",
-                prompt="Please enter your name (2 - 10 characters)")
-            if name and len(name) in range(3, 11):
+                prompt="Please enter your name (3 - 10 characters)")
+            if name and len(name.strip()) in range(3, 11):
                 valid = True
 
         if name:

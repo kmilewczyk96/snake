@@ -9,6 +9,7 @@ class Snake:
         self.initialize()
         self.head = self.body[0]
         self.heading = 0
+        self.segments_pos = [segment.position() for segment in self.body]
 
     def initialize(self):
         for step in range(5):
@@ -35,6 +36,7 @@ class Snake:
         x, y = self.body[-1].position()
         segment.setposition(x, y)
         self.body.append(segment)
+        self.segments_pos = [(round(segment.xcor()), round(segment.ycor())) for segment in self.body]
 
     def head_north(self):
         if self.heading != SOUTH:
