@@ -1,13 +1,8 @@
-## **THIS IS...**
+# About this project:
 Classic "Snake" game created with Python's built-in Turtle module.
-<br/><br/>
+
+# Requirements:
+1. Python 3.6+ (some versions of Python don't include Tkinter as built-in package. You can check if tkinter is installed by running "python -m tkinter")
  
-## **RUNNING PROGRAM**
-  - To play game simply run main.py from main folder.
-  - Only requirement is python: 3.6+
- <br/><br/>
- 
-## **CONTROLS**
-  - To move in menus use arrow keys, press space to proceed
-  - To control snake use WSAD keys
-<br/><br/>
+# Installation:
+1. Run "python main.py"
